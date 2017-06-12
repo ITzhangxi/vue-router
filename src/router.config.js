@@ -1,9 +1,8 @@
 // 路由跳转第三步：
-
 //引入Home组件
 import Home from './components/Home.vue'
-
-
+//引入HomeChild组件
+import HomeChild from './components/HomeChild.vue'
 //使用ES6语法将配置的路由导出
 export default [
     // =======================================================================================
@@ -29,14 +28,21 @@ export default [
     //     redirect: '/home'
     // },
 //    ============================================================================================
-
-
 //    配置刚刚引入的Home组件，将这个组件与‘/home’路由绑定在一起
     {
         //路由
         path: '/home',
         //这个‘/home’对应的组件Home
-        component: Home
+        component: Home,
+        //配置home的二级菜单
+        children:[
+            {
+                //配置路由
+                path:'/home/homeChild',
+                //配置对应的组件
+                component:HomeChild
+            }
+        ]
     },
     {
         //  当地址栏上的没有路由的话，就自动重定向到'/home'路由中，这里的就是一打开页面就显示home这路由
@@ -44,5 +50,4 @@ export default [
         redirect: '/home'
     },
 //    到这里，home路由就配置好了
-
 ]
