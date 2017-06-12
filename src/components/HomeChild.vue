@@ -21,4 +21,18 @@
         background-color: darkblue;
     }
 </style>
-<script></script>
+<script>
+    export default{
+        methods:{
+            change(){
+//                console.log(222)
+                alert(222)
+            }
+        },
+//        这个watch写在发生变化路由的上一级菜单中，这里path:'/home/homeChild/:id'这里变化的是id，所以，wathc写到HomeChild这个组件中
+        watch:{
+//            这里键必须是'$router',值是执行的函数名字
+            '$route':'change'
+        },
+    }
+</script>
