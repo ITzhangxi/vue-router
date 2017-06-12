@@ -3,6 +3,8 @@
 import Home from './components/Home.vue'
 //引入HomeChild组件
 import HomeChild from './components/HomeChild.vue'
+//引入HomeRadom组件
+import HomeRadom from './components/HomeRadom.vue'
 //使用ES6语法将配置的路由导出
 export default [
     // =======================================================================================
@@ -40,7 +42,18 @@ export default [
                 //配置路由
                 path:'/home/homeChild',
                 //配置对应的组件
-                component:HomeChild
+                component:HomeChild,
+                children:[
+                    {
+                        //指定该组件到什么位置显示，切记那个<router-view><\router-view>必须写道HomeChild组件中就是:id的父组件中
+                        path:'/home/homeChild/:id',
+                        /*传入多个params*/
+                        // path:'/home/homeChild/:id/:li',
+                        //这个name值必须和router-link中的name值一样
+                        name:'HomeRadom',
+                        component:HomeRadom
+                    }
+                ]
             }
         ]
     },
